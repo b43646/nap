@@ -4,6 +4,6 @@
     "applicationLanguage": "utf-8",
     "enforcementMode": "blocking",
     "responsePageReference": {
-        "link": "http://10.1.20.4/nginx-app-protect/reference-blocking-page/-/raw/master/blocking-custom-1.txt"
+        "link": "http://10.1.1.7/nginx-app-protect/reference-blocking-page/-/raw/master/blocking-custom-1.txt"
     }
 }
