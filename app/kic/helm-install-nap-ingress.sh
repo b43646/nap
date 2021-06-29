@@ -1,0 +1,18 @@
+helm install nginx-ingress nginx-stable/nginx-ingress  \
+--namespace nginx-ingress  \
+--set controller.kind=deployment \
+--set controller.replicaCount=2 \
+--set controller.nginxplus=true \
+--set controller.appprotect.enable=true \
+--set controller.image.repository=registry.gitlab.com/mattdierick/nginxpluskic-nap \
+--set controller.image.tag=1.10.0 \
+--set controller.service.type=NodePort \
+--set controller.service.httpPort.nodePort=30274 \
+--set controller.service.httpsPort.nodePort=30275 \
+--set controller.serviceAccount.imagePullSecretName=gitlab-token-auth \
+--set controller.ingressClass=ingressclass1 \
+--set controller.nginxStatus.enable=true \
+--set controller.nginxStatus.allowCidrs=0.0.0.0/0 \
+--set controller.nginxStatus.port=8080 \
+--set controller.prometheus.create=true \
+--set controller.prometheus.port=9113
