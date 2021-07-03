@@ -1,0 +1,19 @@
+stages:
+    - Requirements
+    - Deploy_nap
+    - Workaround_dns
+
+Requirements:
+    stage: Requirements
+    script:
+        - ansible-galaxy install -r requirements.yml --force
+
+Deploy_nap:
+    stage: Deploy_nap
+    script:
+        - ansible-playbook -i hosts ./ansible/nap32.yml
+
+Workaround_dns:
+    stage: Workaround_dns
+    script:
+        - ansible-playbook -i hosts ./ansible/copy-nginx-conf.yml

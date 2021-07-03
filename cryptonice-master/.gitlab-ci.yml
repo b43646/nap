@@ -1,0 +1,7 @@
+stages:
+    - TLS_scan
+
+TLS_scan:
+    stage: TLS_scan
+    script:
+        - ansible-playbook -i hosts -e "fqdn=${CI_FQDN}" playbook.yaml

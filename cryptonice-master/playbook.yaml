@@ -1,0 +1,36 @@
+---
+- name: copy content to ELK
+  hosts: elk
+
+  tasks:
+  - name: delete all JSON in ELK
+    shell: rm -f /home/gitlab-runner/crypto/*
+
+- name: run Cryptonice
+  hosts: localhost
+
+  tasks:
+  - name: Delete existing tests
+    shell: rm -f /home/gitlab-runner/crypto/*
+
+  - name: Run cryptonice
+    command: docker exec -dit cryptonice-gitlab sh -c "cd /home && cryptonice {{ fqdn }}"
+
+  - name: WAIT
+    wait_for:
+       path: /home/gitlab-runner/crypto/{{ fqdn }}.json
+
+  - name: rename file
+    shell: mv /home/gitlab-runner/crypto/{{ fqdn }}.json /home/gitlab-runner/crypto/{{ fqdn }}.bck
+
+  - name: add EOL
+    shell: awk '{printf "%s\r\n\r\n", $0}' /home/gitlab-runner/crypto/{{ fqdn }}.bck > /home/gitlab-runner/crypto/{{ fqdn }}.json
+
+- name: copy content to ELK
+  hosts: elk
+
+  tasks:
+  - name: copy JSON to ELK
+    copy:
+      src: /home/gitlab-runner/crypto/{{ fqdn }}.json
+      dest: /home/gitlab-runner/crypto/{{ fqdn }}.json

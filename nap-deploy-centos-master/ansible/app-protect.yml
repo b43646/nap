@@ -1,0 +1,8 @@
+---
+- hosts: centos
+  become: true
+  
+  vars_files:
+    - "app-protect-vars.yml"
+  roles:
+    - role: ansible-role-nginx-app-protect

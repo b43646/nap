@@ -1,0 +1,8 @@
+[
+    {
+        "responseContent": "<html><head><title>Custom Reject Page</title></head><body><p>This is a <strong>custom response page</strong>, it is supposed to overwrite the default page for the <strong>base NAP policy.&nbsp;</strong></p><p>This page can be <strong>modified</strong> by a <strong>dedicated</strong> team, which does not have access to the WAF policy.<br /><br /></p><p><img src=https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif></p><br>Your support ID is: <%TS.request.ID()%><br><br><a href='javascript:history.back();'>[Go Back]</a></body></html>",
+        "responseHeader": "HTTP/1.1 302 OK\\r\\nCache-Control: no-cache\\r\\nPragma: no-cache\\r\\nConnection: close",
+        "responseActionType": "custom",
+        "responsePageType": "default"
+    }
+]

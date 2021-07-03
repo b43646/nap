@@ -1,0 +1,36 @@
+---
+nginx_app_protect_state: present
+
+# nginx_app_protect_version: "-22+3.74.0"
+
+nginx_app_protect_remove_license: false
+
+# nginx_app_protect_use_rhel_subscription_repos: false
+
+nginx_app_protect_install_signatures: true
+
+nginx_app_protect_install_threat_campaigns: true
+
+nginx_app_protect_configure: true
+
+nginx_app_protect_security_policy_template_enable: true
+
+nginx_app_protect_security_policy_enforcement_mode: blocking
+
+nginx_app_protect_log_policy_template_enable: true
+
+nginx_app_protect_log_policy_filter_request_type: all
+
+nginx_app_protect_conf_template_enable: true
+
+nginx_app_protect_log_policy_syslog_target: 10.1.20.6:5144
+
+nginx_app_protect_demo_workload_protocol: http://
+
+nginx_app_protect_demo_workload_host: 10.1.20.41:30274
+
+nginx_app_protect_license:
+
+  certificate: "{{playbook_dir}}/license/nginx-repo.crt"
+
+  key: "{{playbook_dir}}/license/nginx-repo.key"

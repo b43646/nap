@@ -1,0 +1,16 @@
+---
+
+    - hosts: docker
+      gather_facts: false
+
+      tasks:
+
+      - name: Run Docker App-Protect
+        docker_container:
+          name: app-protect
+          image: 10.1.20.12:5000/app-protect:{{dockertag}}
+          state: started
+          ports:
+            - "80:80"
+          volumes:
+            - /home/ubuntu/nginx.conf:/etc/nginx/nginx.conf

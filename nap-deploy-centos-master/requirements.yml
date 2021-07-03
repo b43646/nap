@@ -1,0 +1,18 @@
+# Role Requirements are placed here. Some examples are below:
+
+# Install a role from Ansible Galaxy
+# - name: nginxinc.nginx
+
+# Install roles from Github
+- src: https://github.com/nginxinc/ansible-role-nginx.git
+- src: https://github.com/nginxinc/ansible-role-nginx-app-protect.git
+
+# Install a role from Github using a branch
+#- name: essentials
+#  src: https://github.com/zaiste/ansible-essentials
+#  version: origin/master
+
+# Install a role from Github using a tag
+#- name: essentials
+#  src: https://github.com/zaiste/ansible-essentials
+#  version: 0.0.3
