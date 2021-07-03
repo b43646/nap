@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "a3d3b734-6de2-45f7-9286-166d1a7afca5",
+		"name": "Arcadia API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Last Transactions",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.arcadia-finance.io/trading/transactions.php",
+					"protocol": "https",
+					"host": [
+						"api",
+						"arcadia-finance",
+						"io"
+					],
+					"path": [
+						"trading",
+						"transactions.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Buy Stocks",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"trans_value\":12,\r\n\t\"qty\":16,\r\n\t\"company\":\"MSFT\",\r\n\t\"action\":\"buy\",\r\n\t\"stock_price\":198\r\n}"
+				},
+				"url": {
+					"raw": "http://app-protect-centos.arcadia-finance.io/trading/rest/buy_stocks.php",
+					"protocol": "http",
+					"host": [
+						"app-protect-centos",
+						"arcadia-finance",
+						"io"
+					],
+					"path": [
+						"trading",
+						"rest",
+						"buy_stocks.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Sell Stocks",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"trans_value\":212,\r\n\t\"qty\":16,\r\n\t\"company\":\"MSFT\",\r\n\t\"action\":\"sell\",\r\n\t\"stock_price\":158\r\n}"
+				},
+				"url": {
+					"raw": "http://app-protect-centos.arcadia-finance.io/trading/rest/sell_stocks.php",
+					"protocol": "http",
+					"host": [
+						"app-protect-centos",
+						"arcadia-finance",
+						"io"
+					],
+					"path": [
+						"trading",
+						"rest",
+						"sell_stocks.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Transfert Money",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\":92,\r\n    \"account\":2075894,\r\n    \"currency\":\"GBP\",\r\n    \"friend\":\"Vincent\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "javascript"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://app-protect-centos.arcadia-finance.io/api/rest/execute_money_transfer.php",
+					"protocol": "http",
+					"host": [
+						"app-protect-centos",
+						"arcadia-finance",
+						"io"
+					],
+					"path": [
+						"api",
+						"rest",
+						"execute_money_transfer.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Buy Stocks XSS attack",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"trans_value\":66,\r\n\t\"qty\":4,\r\n\t\"company\":\"MSFT\",\r\n\t\"action\":\"test<script>alert(document.cookie)</script>\",\r\n\t\"stock_price\":198\r\n}"
+				},
+				"url": {
+					"raw": "http://app-protect-centos.arcadia-finance.io/trading/rest/buy_stocks.php",
+					"protocol": "http",
+					"host": [
+						"app-protect-centos",
+						"arcadia-finance",
+						"io"
+					],
+					"path": [
+						"trading",
+						"rest",
+						"buy_stocks.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Transfert Money Attack",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\":\"12\",\r\n    \"account\":\"<script>\",\r\n    \"currency\":\"GBP\",\r\n    \"friend\":\"Bart\"\r\n}"
+				},
+				"url": {
+					"raw": "http://app-protect-centos.arcadia-finance.io/api/rest/execute_money_transfer.php",
+					"protocol": "http",
+					"host": [
+						"app-protect-centos",
+						"arcadia-finance",
+						"io"
+					],
+					"path": [
+						"api",
+						"rest",
+						"execute_money_transfer.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
